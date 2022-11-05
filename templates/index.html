@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 <!-- -->
+
 {% block content %}
-<h1 class="title">This is my blog made with Zola.</h1>
-<p>
-  Click <a href="{{ get_url(path='@/blog/_index.md') }}">here</a> to see my
-  posts.
-</p>
+<img
+  class="logo"
+  width="240"
+  src="{{ get_url(path='logo/MirrorLabs-logo-black.svg') | safe }}"
+  usemap="#image-map"
+/>
+
+<div class="text-container">{{ section.content | safe }}</div>
 {% endblock content %}

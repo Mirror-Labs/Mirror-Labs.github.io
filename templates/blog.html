@@ -1,11 +1,20 @@
-{% extends "base.html" %}
+{% extends "with-title.html" %}
 <!--  -->
 {% block content %}
-<h1 class="title">{{ section.title }}</h1>
-<ul>
+<div class="blog">
   <!-- If you are using pagination, section.pages will be empty. You need to use the paginator object -->
   {% for page in section.pages %}
-  <li><a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
+  <div class="blog-post">
+    <div class="blog-post-header">
+      <span>#</span>
+      <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+    </div>
+    <div class="blog-post-metadata">
+      <span>{{page.date}}</span>
+      <span>/{{page.extra.author}}</span>
+    </div>
+  </div>
+
   {% endfor %}
-</ul>
+</div>
 {% endblock content %}

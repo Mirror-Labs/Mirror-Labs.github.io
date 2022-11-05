@@ -1,14 +1,110 @@
+// Color
+$black-color: #000
+$accent-color: #CD5512
+$not-important-color: #434343
+//font
 @font-face
   font-family: JetBrainsMono
   src: url(./fonts/JetBrainsMono-Medium.woff2)
 
 $font-stack: JetBrainsMono, sans-serif
-$black-color: #000
-$accent-color: #CD5512
+
+$font-4xl: 3.052rem
+$font-3xl: 2.441rem
+$font-2xl: 1.953rem
+$font-xl: 1.563rem
+$font-lg: 1.25rem
+$font-md: 1rem
+$font-sm: 0.8rem
+$font-xs: 0.64rem
+$font-2xs: 0.512rem
+
+//space
+$space-3xs: 2px
+$space-2xs: 4px
+$space-xs: 8px
+$space-sm: 12px
+$space-md: 20px
+$space-lg: 32px
+$space-xl: 52px
+$space-2xl: 84px
+
+// Base
 
 body
   font: 100% $font-stack
   color: $black-color
-  text-decoration-color: $accent-color
+  font-size: 16px
+  max-width: 1200px
+  margin: auto
+  padding-left: $space-lg
+  padding-right: $space-lg
+
+.container
+  max-width: 800px
+  margin: auto
+
+.logo
+  margin: auto
+  display: block
 
 .header
+  box-sizing: border-box
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  margin: $space-sm
+  width: 100%
+  align-items: baseline
+  .header-title
+    margin-right: $space-lg
+    font-size: $font-2xl
+  .header-links
+    font-size: $font-lg
+
+a
+  color: $black-color
+  text-decoration-color: $accent-color
+  text-decoration-thickness: 2px
+
+.section
+  margin-top: $space-2xl
+
+// Index
+
+.text-container
+  margin: auto
+  max-width: 600px
+
+.center
+  display: grid
+  place-items: center
+
+// Title
+
+.title
+  font-size: $font-2xl
+  .title-dot
+    color: $accent-color
+
+// Blog
+
+.blog
+  margin-left: $space-md
+
+.blog-post
+  width: 100%
+  margin-bottom: $space-lg
+  .blog-post-header
+    font-size: $font-2xl
+    span
+      color: $accent-color
+  .blog-post-metadata
+    width: 100%
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+
+    color: $not-important-color
+
+// Posts
