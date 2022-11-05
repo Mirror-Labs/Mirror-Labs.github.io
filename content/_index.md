@@ -20,4 +20,4 @@ Sacrificing our users' privacy, ownership, and access to _their_ data.
 
 We are building MirrorDB: an application-centric p2p database.
 
-/MirrorLabs Team
+/The MirrorLabs Team

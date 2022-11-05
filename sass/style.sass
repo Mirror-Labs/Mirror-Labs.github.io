@@ -70,11 +70,26 @@ a
 .section
   margin-top: $space-2xl
 
+.social-link
+  text-decoration: none
+
+h1
+  font-size: $font-4xl
+h2
+  font-size: $font-3xl
+h3
+  font-size: $font-2xl
+h4
+  font-size: $font-xl
+h5
+  font-size: $font-xl
+h6
+  font-size: $font-lg
 // Index
 
 .text-container
   margin: auto
-  max-width: 600px
+  max-width: 800px
 
 .center
   display: grid
@@ -94,11 +109,15 @@ a
 
 .blog-post
   width: 100%
-  margin-bottom: $space-lg
+  margin-bottom: $space-2xl
   .blog-post-header
+    margin-bottom: $space-sm
     font-size: $font-2xl
     span
       color: $accent-color
+    a
+      text-underline-offset: $space-2xs
+
   .blog-post-metadata
     width: 100%
     display: flex
@@ -108,3 +127,14 @@ a
     color: $not-important-color
 
 // Posts
+
+// People
+
+.people-headshoot
+  border-radius: 50%
+
+.people-name
+  margin-bottom: 0
+
+.people-title
+  color: $not-important-color

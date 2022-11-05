@@ -1,3 +1,44 @@
-{% extends "base.html" %}
+{% extends "with-title.html" %}
 <!--  -->
-{% block content %} {% endblock content %}
+{% block content %}
+
+<div class="center">
+  {% set image = resize_image(path='../assets/people/frank-hampus-weslien.jpeg',
+  width=200, height=200, op="fit") %}
+  <img class="people-headshoot" src="{{ image.url }}" />
+  <h3 class="people-name">Frank Hampus Weslien</h3>
+  <p class="people-title">Web Magician</p>
+
+  <div class="social-links-container">
+    <a
+      href="https://frankhampusweslien.com/"
+      class="social-link"
+      target="_blank"
+    >
+      <img width="24" src="{{ get_url(path='icons/link.svg') | safe }}" />
+    </a>
+    <a
+      href="https://github.com/honungsburk"
+      class="social-link"
+      target="_blank"
+    >
+      <img width="24" src="{{ get_url(path='icons/github.svg') | safe }}" />
+    </a>
+    <a
+      href="https://twitter.com/HampusFrank"
+      class="social-link"
+      target="_blank"
+    >
+      <img width="24" src="{{ get_url(path='icons/twitter.svg') | safe }}" />
+    </a>
+    <a
+      href="https://www.linkedin.com/in/frank-hampus-weslien-b81b59197/"
+      class="social-link"
+      target="_blank"
+    >
+      <img width="24" src="{{ get_url(path='icons/linkedin.svg') | safe }}" />
+    </a>
+  </div>
+</div>
+
+{% endblock content %}
