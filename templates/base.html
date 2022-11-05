@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>MirrorLabs</title>
+    <link rel="stylesheet" href="{{ get_url(path="style.css") | safe }}" />
+  </head>
+
+  <body>
+    <div class="header">
+      <a href="{{ get_url(path='./') | safe }}">MirrorLabs</a>
+      <a href="{{ get_url(path='@/blog/_index.md') }}">/posts</a>
+      <a href="{{ get_url(path='@/projects/_index.md') }}">/projects</a>
+      <a href="{{ get_url(path='@/people/_index.md') }}">/people</a>
+    </div>
+
+    <section class="section">
+      <div class="container">{% block content %} {% endblock %}</div>
+    </section>
+  </body>
+</html>
