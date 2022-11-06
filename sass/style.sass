@@ -29,6 +29,10 @@ $space-lg: 32px
 $space-xl: 52px
 $space-2xl: 84px
 
+// Breakpoints
+
+$break-small: 640px
+
 // Base
 
 body
@@ -56,12 +60,27 @@ body
   margin: $space-sm
   width: 100%
   align-items: baseline
+  @media (max-width: $break-small)
+    flex-direction: column
+
+  .header-left
+    @media (max-width: $break-small)
+      margin-bottom: $space-sm
+
   .header-title
     margin-right: $space-lg
     font-size: $font-2xl
+
+    @media (max-width: $break-small)
+      margin-right: $space-sm
+      font-size: $font-xl
   .header-links
     font-size: $font-lg
-
+    @media (orientation: portrait)
+      display: flex
+      flex-direction: column
+      a
+        margin-bottom: $space-sm
 a
   color: $black-color
   text-decoration-color: $accent-color
@@ -69,6 +88,7 @@ a
 
 .section
   margin-top: $space-2xl
+  margin-bottom: $space-2xl
 
 .social-link
   text-decoration: none

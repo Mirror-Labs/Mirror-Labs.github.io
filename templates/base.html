@@ -3,19 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <title>MirrorLabs</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
     <link rel="stylesheet" href="{{ get_url(path='style.css') | safe }}" />
   </head>
 
   <body>
     <div class="header">
-      <div>
+      <div class="header-left">
         <a class="header-title" href="{{ get_url(path='./') | safe }}"
           >MirrorLabs</a
         >
         <a href="https://github.com/Mirror-Labs">
           <img
             class="social-link"
-            width="20"
+            width="24"
             src="{{ get_url(path='icons/github.svg') | safe }}"
           />
         </a>
