@@ -3,7 +3,6 @@ title = "MirrorDB: From an individual to a network"
 date = 2022-11-05
 [extra]
 author = "Frank Hampus Weslien"
-draft = true
 +++
 
 My first attempt at creating a startup was last year, in 2021.
