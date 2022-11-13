@@ -118,4 +118,4 @@ Now we just need to do the difficult thing of building it!
 
 ---
 
-[^1] Note that we shouldn't be using normal timestamps but isntead use something like a [Hybrid Logical Clock](https://medium.com/geekculture/all-things-clock-time-and-order-in-distributed-systems-hybrid-logical-clock-in-depth-7c645eb03682).
+[^1] Note that we shouldn't be using normal timestamps but instead use something like a [Hybrid Logical Clock](https://medium.com/geekculture/all-things-clock-time-and-order-in-distributed-systems-hybrid-logical-clock-in-depth-7c645eb03682).
