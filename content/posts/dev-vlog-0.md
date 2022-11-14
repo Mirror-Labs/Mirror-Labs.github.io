@@ -17,7 +17,7 @@ The web has become more and more powerful as an application platform. You have s
 - [Bluetooth](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth)
 - [WebGL](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
 - [p2p connections via WebRTC](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
-- [... and a lot more](https://developer.mozilla.org/en-US/docs/Web/API)
+- [... and a lot more!](https://developer.mozilla.org/en-US/docs/Web/API)
 
 You can even install web apps and add them to your home
 screen across both mobile, and desktop by creating a progressive web app (PWA).
@@ -84,7 +84,7 @@ In Datalog you take existing tables and create new ones, here I look for all the
 
 ```
 
-[Look here for a introduction to datalog.](https://x775.net/2019/03/18/Introduction-to-Datalog.html)
+[Look here for an introduction to datalog.](https://x775.net/2019/03/18/Introduction-to-Datalog.html)
 
 **Triple Stores** are nice because they are so simple (and easy to make into a CRDT). You can think of it as your
 database only consisting of one table with three columns "id", "attribute", and "value".
