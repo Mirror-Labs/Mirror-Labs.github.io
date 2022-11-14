@@ -87,7 +87,7 @@ In Datalog you take existing tables and create new ones, here I look for all the
 [Look here for an introduction to datalog.](https://x775.net/2019/03/18/Introduction-to-Datalog.html)
 
 **Triple Stores** are nice because they are so simple (and easy to make into a CRDT). You can think of it as your
-database only consisting of one table with three columns "id", "attribute", and "value".
+database only consisting of one table with three columns: "id", "attribute", and "value".
 Even though it is so simple you can model any kind of data. Infact, let's try to merge the Person and Movie tables above into one.
 
 Example:
