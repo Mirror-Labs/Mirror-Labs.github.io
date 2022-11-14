@@ -30,7 +30,7 @@ by going web native.
 Imagine apps which you can reach via a url. No login required.
 It can be installed and added to your homescreen.
 If you want to pair your phone and laptop you scan a QR code and it will automatically start syncing.
-There are a lot of apps where this design would work brilliantly and with applications in mind we can start sketching the requirements for our database.
+There are a lot of apps where this design would work brilliantly and with does applications in mind we can start sketching the requirements for our database.
 
 As soon as a user adds a new entry we want to be able to update all queries
 so that the UI always reflects the latest state.
@@ -74,7 +74,7 @@ _Movie Table_
 | 500 | "Aliens"         | "1986-07-18" | 100      |
 | ... | ...              | ...          | ...      |
 
-In Datalog you take existing tables and create new ones, here I look for all the movies each director has made by combining the information from two tables.
+In Datalog you take existing tables and create new ones. Here, I look for all the movies each director has made by combining the information from two tables.
 
 ```datalog
 
