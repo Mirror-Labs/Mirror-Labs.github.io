@@ -1,10 +1,13 @@
 +++
-title = "MirrorDB: From an individual to a network"
+title = "What I learned as a solo founder"
 date = 2022-11-05
+
 [extra]
+tags = ["startup"]
+authorURL = "https://frankhampusweslien.com/"
 author = "Frank Hampus Weslien"
 twitterAuthorID = "@HampusFrank"
-description = "What I learned as a solo founder."
+description = "Creating a company is hard. This is what I learned."
 +++
 
 My first attempt at creating a startup was last year, in 2021.

@@ -2,7 +2,10 @@
 title = "VLOG[0]: Why are we building MirrorDB?"
 date = 2022-11-13
 draft = false
+
 [extra]
+tags = ["vlog", "web"]
+authorURL = "https://frankhampusweslien.com/"
 author = "Frank Hampus Weslien"
 twitterAuthorID = "@HampusFrank"
 description = "Your university professor will tell you one thing: don't create your own database. Learn why we are doing it anyway."
