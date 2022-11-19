@@ -1,6 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{{ get_url(path='/apple-touch-icon.png') | safe }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{{ get_url(path='/favicon-32x32.png') | safe }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{{ get_url(path='/favicon-16x16.png') | safe }}"
+    />
+    <link
+      rel="manifest"
+      href="{{ get_url(path='/site.webmanifest') | safe }}"
+    />
+    <link
+      rel="mask-icon"
+      href="{{ get_url(path='/safari-pinned-tab.svg') | safe }}"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Twitter ID of the website -->
+    {#
+    <meta name="twitter:site:id" content="@HampusFrank" />
+    #}
+    <!-- Creator -of the content (For articles) -->
+    {% block linkedData %} {% endblock %}
+
     <meta charset="utf-8" />
     <title>MirrorLabs</title>
     <meta

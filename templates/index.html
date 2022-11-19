@@ -1,7 +1,25 @@
 {% extends "base.html" %}
 <!-- -->
 
-{% block content %}
+{% block linkedData %}
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator:id" content="@HampusFrank" />
+<meta property="og:url" content="{{ get_url(path='') | safe }}" />
+<meta property="og:site_name" content="MirrorLabs" />
+<meta
+  property="og:title"
+  content="MirrorLabs: making the future decentralized"
+/>
+<meta
+  property="og:description"
+  content="Building a local-first database for the web"
+/>
+<meta
+  property="og:image"
+  content="{{ get_url(path='logo/MirrorLabs-logo-black.jpeg') | safe }}"
+/>
+{% endblock linkedData %} {% block content %}
+
 <img
   class="logo"
   width="240"
