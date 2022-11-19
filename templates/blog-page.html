@@ -1,5 +1,21 @@
 {% extends "base.html" %}
 <!--  -->
+
+{% block linkedData %}
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator:id" content="{{ page.extra.twitterAuthorID}}" />
+<meta property="og:url" content="{{ current_url }}" />
+<meta property="og:site_name" content="MirrorLabs" />
+<meta property="og:title" content="{{ page.title }}" />
+<meta property="og:description" content="{{ page.extra.description}}" />
+<meta
+  property="og:image"
+  content="{{ get_url(path='logo/MirrorLabs-logo-black.jpeg') | safe }}"
+/>
+<meta property="og:image:alt" content="The MirrorLabs logo" />
+{% endblock linkedData %}
+
+<!--  -->
 {% block content %}
 <h1 class="title">{{ page.title }}</h1>
 <div class="post-metadata">

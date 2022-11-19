@@ -4,6 +4,8 @@ date = 2022-11-13
 draft = false
 [extra]
 author = "Frank Hampus Weslien"
+twitterAuthorID = "@HampusFrank"
+description = "Your university professor will tell you one thing: don't create your own database. Learn why we are doing it anyway."
 +++
 
 **Why are we building MirrorDB?**

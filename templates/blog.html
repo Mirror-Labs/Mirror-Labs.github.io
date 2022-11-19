@@ -1,5 +1,22 @@
 {% extends "with-title.html" %}
 <!--  -->
+{% block linkedData %}
+<meta name="twitter:card" content="summary" />
+{# <meta name="twitter:site:id" content="@MirrorLabs" /> #}
+<meta property="og:url" content="{{ current_url }}" />
+<meta property="og:site_name" content="MirrorLabs" />
+<meta property="og:title" content="The MirrorLabs Blog" />
+<meta
+  property="og:description"
+  content="Follow the development of MirrorDB: a local-first database for the web."
+/>
+<meta
+  property="og:image"
+  content="{{ get_url(path='logo/MirrorLabs-logo-black.jpeg') | safe }}"
+/>
+<meta property="og:image:alt" content="The MirrorLabs logo" />
+{% endblock linkedData %}
+<!--  -->
 {% block content %}
 <div class="blog">
   <!-- If you are using pagination, section.pages will be empty. You need to use the paginator object -->
