@@ -1,5 +1,19 @@
 {% extends "with-title.html" %}
 <!--  -->
+
+{% block linkedData %}
+<script id="frank-hampus-weslien" type="application/ld+json">
+  {
+    "@context": "http://schema.org/",
+    "@id": "https://frankhampusweslien.com/me",
+    "@type": "Person",
+    "name": "Frank Hampus Weslien",
+    "funder": { "@id": "{{ get_url(path='') | safe }}" },
+    "gender": { "@id": "schema:Male" }
+  }
+</script>
+{% endblock content %}
+<!-- -->
 {% block content %}
 
 <div class="center">

@@ -19,6 +19,30 @@
   content="{{ get_url(path='logo/MirrorLabs-logo-black.jpeg') | safe }}"
 />
 <meta property="og:image:alt" content="The MirrorLabs logo" />
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@id"  : "{{ get_url(path='') | safe }}",
+    "@type": "Organization",
+    "name": "MirrorLabs",
+    "member": [
+      {
+        "@type": "OrganizationRole"
+        "member": {
+          "@type": "Person",
+          "name": "Joe Montana"
+        },
+        "startDate": "2022-11-05",
+        "roleName": "Chief Web Magician"
+      }
+    ],
+    "url" : "{{ get_url(path='') | safe }}",
+    "image" : "{{ get_url(path='logo/MirrorLabs-logo-black.svg') | safe }}",
+    "keywords" : ["decentralization", "startup", ]
+    "description" : "We are building an application centric p2p database for the browser."
+  }
+</script>
 {% endblock linkedData %} {% block content %}
 
 <img
