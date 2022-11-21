@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://Mirror-Labs.github.io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://Mirror-Labs.github.io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://Mirror-Labs.github.io/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="https://Mirror-Labs.github.io/site.webmanifest"
+    />
+    <link
+      rel="mask-icon"
+      href="https://Mirror-Labs.github.io/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Twitter ID of the website -->
+    
+    <!-- Creator -of the content (For articles) -->
+
+    <meta property="og:site_name" content="MirrorLabs" />
+    
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator:id" content="@HampusFrank" />
+<meta property="og:url" content="https:&#x2F;&#x2F;Mirror-Labs.github.io&#x2F;posts&#x2F;dev-vlog-0&#x2F;" />
+<meta property="og:title" content="VLOG[0]: Why are we building MirrorDB?" />
+<meta property="og:description" content="Your university professor will tell you one thing: don&#x27;t create your own database. Learn why we are doing it anyway." />
+<meta
+  property="og:image"
+  content="https://Mirror-Labs.github.io/logo/MirrorLabs-logo-black.jpeg"
+/>
+<meta property="og:image:alt" content="The MirrorLabs logo" />
+
+<meta property="og:type" content="article" />
+<meta property="article:author" content="https:&#x2F;&#x2F;frankhampusweslien.com&#x2F;" />
+<meta property="article:publisher" content="https://Mirror-Labs.github.io" />
+<meta property="article:published_time" content="2022-11-13" />
+<meta property="article:section" content="Technology" />
+
+<meta property="article:tag" content="vlog" />
+
+<meta property="article:tag" content="web" />
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Blog",
+        "item": "https://Mirror-Labs.github.io/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "VLOG[0]: Why are we building MirrorDB?"
+      }
+    ]
+  }
+</script>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "name": "VLOG[0]: Why are we building MirrorDB?",
+    "headline": "VLOG[0]: Why are we building MirrorDB?",
+    "description": "Your university professor will tell you one thing: don&#x27;t create your own database. Learn why we are doing it anyway.",
+    "image": ["https://Mirror-Labs.github.io/logo/MirrorLabs-logo-black.jpeg"],
+    "datePublished": "2022-11-13",
+    "dateModified": "2022-11-21",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Frank Hampus Weslien",
+        "url": "https:&#x2F;&#x2F;frankhampusweslien.com&#x2F;"
+      }
+    ]
+  }
+</script>
+<!--  -->
+
+
+    <meta charset="utf-8" />
+    <title>MirrorLabs</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <link rel="stylesheet" href="https://Mirror-Labs.github.io/style.css" />
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="header-left">
+        <a class="header-title" href="https://Mirror-Labs.github.io/."
+          >MirrorLabs</a
+        >
+        <a href="https://github.com/Mirror-Labs" class="social-link">
+          <img width="24" src="https://Mirror-Labs.github.io/icons/github.svg" />
+        </a>
+        <a href="/atom.xml" class="social-link">
+          <img width="24" src="https://Mirror-Labs.github.io/icons/rss.svg" />
+        </a>
+      </div>
+      <div class="header-links">
+        <a href="https://Mirror-Labs.github.io/posts/">/posts</a>
+        <a href="https://Mirror-Labs.github.io/projects/">/projects</a>
+        <a href="https://Mirror-Labs.github.io/people/">/people</a>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+          
+<h1 class="title">VLOG[0]: Why are we building MirrorDB?</h1>
+<div class="post-metadata">
+  <span> by Frank Hampus Weslien</span>
+  <span>2022-11-13</span>
+</div>
+<hr />
+<p><strong>Why are we building MirrorDB?</strong>
+We want to build local-first web apps with p2p syncing and there doesn’t exist a database that allow us to build
+them.</p>
+<p>The web has become more and more powerful as an application platform. You have support for:</p>
+<ul>
+<li><a rel="noopener" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API">Notifications</a></li>
+<li><a rel="noopener" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API">Structured data storage via indexedDB</a></li>
+<li><a rel="noopener" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth">Bluetooth</a></li>
+<li><a rel="noopener" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">WebGL</a></li>
+<li><a rel="noopener" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API">p2p connections via WebRTC</a></li>
+<li><a rel="noopener" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API">… and a lot more!</a></li>
+</ul>
+<p>You can even install web apps and add them to your home
+screen across both mobile, and desktop by creating a progressive web app (PWA).</p>
+<p>The web has a lot to offer. Especially considering the
+web’s two fundamental advantages: reach (you can link to a runnable application), and avoid the apple/play store tax.
+We believe that today you could write 10x better versions of a lot of applications
+by going web native.</p>
+<p>Imagine apps which you can reach via a url. No login required.
+It can be installed and added to your homescreen.
+If you want to pair your phone and laptop you scan a QR code and it will automatically start syncing.
+There are a lot of apps where this design would work brilliantly and with does applications in mind we can start sketching the requirements for our database.</p>
+<p>As soon as a user adds a new entry we want to be able to update all queries
+so that the UI always reflects the latest state.
+We need a query language with a focus on joins; it is very typical for the UI to want data
+about multiple related entities.
+A user also expects to be able to make changes on their phone, turn it off, keep using the app on their laptop and still in the end be able to merge the state on the phone and laptop without conflicts.
+Ideally, the merging-layer is protocol agnostic and works across: files, bluetooth, usb, webrtc, websocket, and etc.</p>
+<p>There are a couple of technologies/ideas that we believe will work great in tandem to realise this vision.</p>
+<p><strong>IndexedDB</strong> is a database that exists in your browser and allows you to store structured data and create indexes on that data.
+Obviously you can not create a local-first web app without it.</p>
+<p><strong>Typescript/Rust</strong> will be used to build the database. Typescript adds extra safety
+compared to Javascript while still giving us access to all browser API:s. Rust
+is interesting because of its great webassembly support. Databases are performance critical
+and webassembly might greatly speed it up.</p>
+<p><strong>CRDTs</strong>, conflict-free replicated data types, are a type of data structure with
+merging built in. The idea is that instead of writing complex algorithms for merging data we push it
+into the very semantics of the data structure itself and get merging for free.
+Sets are a basic example of such a data structure; you can always join two sets without there being conflicts.</p>
+<p><strong>Datalog</strong> is a simple but powerful language to write logical programs over a set of facts.
+Usually the facts are separated into different tables like this:</p>
+<p><em>Person Table</em></p>
+<table><thead><tr><th style="text-align: center">ID</th><th style="text-align: left">Name</th><th style="text-align: left">Born</th></tr></thead><tbody>
+<tr><td style="text-align: center">100</td><td style="text-align: left">“James Cameron”</td><td style="text-align: left">“1954-08-16”</td></tr>
+<tr><td style="text-align: center">200</td><td style="text-align: left">“Quentin Tarantino”</td><td style="text-align: left">“1963-03-27”</td></tr>
+<tr><td style="text-align: center">…</td><td style="text-align: left">…</td><td style="text-align: left">…</td></tr>
+</tbody></table>
+<p><em>Movie Table</em></p>
+<table><thead><tr><th style="text-align: center">ID</th><th style="text-align: left">Title</th><th style="text-align: left">Release Date</th><th style="text-align: left">Director</th></tr></thead><tbody>
+<tr><td style="text-align: center">300</td><td style="text-align: left">“The Terminator”</td><td style="text-align: left">“1984-10-26”</td><td style="text-align: left">100</td></tr>
+<tr><td style="text-align: center">400</td><td style="text-align: left">“Pulp Fiction”</td><td style="text-align: left">“1994-05-21”</td><td style="text-align: left">200</td></tr>
+<tr><td style="text-align: center">500</td><td style="text-align: left">“Aliens”</td><td style="text-align: left">“1986-07-18”</td><td style="text-align: left">100</td></tr>
+<tr><td style="text-align: center">…</td><td style="text-align: left">…</td><td style="text-align: left">…</td><td style="text-align: left">…</td></tr>
+</tbody></table>
+<p>In Datalog you take existing tables and create new ones. Here, I look for all the movies each director has made by combining the information from two tables.</p>
+<pre data-lang="datalog" style="background-color:#2b303b;color:#c0c5ce;" class="language-datalog "><code class="language-datalog" data-lang="datalog"><span>
+</span><span>  DirectorToMovie(dir_name, movie_title) :-
+</span><span>    Person(dir_id, dir_name, _),
+</span><span>    Movie(_, movie_title, _, dir_id)
+</span><span>
+</span></code></pre>
+<p><a rel="noopener" target="_blank" href="https://x775.net/2019/03/18/Introduction-to-Datalog.html">Look here for an introduction to datalog.</a></p>
+<p><strong>Triple Stores</strong> are nice because they are so simple (and easy to make into a CRDT). You can think of it as your
+database only consisting of one table with three columns: “id”, “attribute”, and “value”.
+Even though it is so simple you can model any kind of data. Infact, let’s try to merge the Person and Movie tables above into one.</p>
+<p>Example:</p>
+<table><thead><tr><th style="text-align: center">ID</th><th style="text-align: left">Attribute</th><th style="text-align: left">Value</th></tr></thead><tbody>
+<tr><td style="text-align: center">100</td><td style="text-align: left">“person/name”</td><td style="text-align: left">“James Cameron”</td></tr>
+<tr><td style="text-align: center">100</td><td style="text-align: left">“person/born”</td><td style="text-align: left">“1954-08-16”</td></tr>
+<tr><td style="text-align: center">200</td><td style="text-align: left">“person/name”</td><td style="text-align: left">“Quentin Tarantino”</td></tr>
+<tr><td style="text-align: center">200</td><td style="text-align: left">“person/born”</td><td style="text-align: left">“1963-03-27”</td></tr>
+<tr><td style="text-align: center">300</td><td style="text-align: left">“movie/title”</td><td style="text-align: left">“The Terminator”</td></tr>
+<tr><td style="text-align: center">300</td><td style="text-align: left">“movie/director”</td><td style="text-align: left">100</td></tr>
+<tr><td style="text-align: center">300</td><td style="text-align: left">“movie/release-date”</td><td style="text-align: left">“1984-10-26”</td></tr>
+<tr><td style="text-align: center">400</td><td style="text-align: left">“movie/title”</td><td style="text-align: left">“Pulp Fiction”</td></tr>
+<tr><td style="text-align: center">400</td><td style="text-align: left">“movie/director”</td><td style="text-align: left">200</td></tr>
+<tr><td style="text-align: center">400</td><td style="text-align: left">“movie/release-date”</td><td style="text-align: left">“1994-05-21”</td></tr>
+<tr><td style="text-align: center">500</td><td style="text-align: left">“movie/title”</td><td style="text-align: left">“Aliens”</td></tr>
+<tr><td style="text-align: center">500</td><td style="text-align: left">“movie/director”</td><td style="text-align: left">100</td></tr>
+<tr><td style="text-align: center">500</td><td style="text-align: left">“movie/release-date”</td><td style="text-align: left">“1986-07-18”</td></tr>
+<tr><td style="text-align: center">…</td><td style="text-align: left">…</td><td style="text-align: left">…</td></tr>
+</tbody></table>
+<p>Notice how there is a lot of replicated information. This is actually useful because it makes it very simple
+to update individual attributes for an entity, especially in a distributed system such as ours.
+If we add timestamps to all triples we can resolve merges by always picking the latest one.<sup class="footnote-reference"><a href="#1">1</a></sup></p>
+<p>We feel very hopeful that we will be able to solve our problem by combining all these technologies/ideas.
+Now we just need to do the difficult thing of building it!</p>
+<hr />
+<p><sup class="footnote-reference"><a href="#1">1</a></sup> Note that we shouldn’t be using normal timestamps but instead use something like a <a rel="noopener" target="_blank" href="https://medium.com/geekculture/all-things-clock-time-and-order-in-distributed-systems-hybrid-logical-clock-in-depth-7c645eb03682">Hybrid Logical Clock</a>.</p>
+
+<!--  -->
+
+      </div>
+    </section>
+  </body>
+</html>

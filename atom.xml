@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>MirrorLabs</title>
+	<subtitle>We are building a local-first database with superpowers!</subtitle>
+	<link href="https://Mirror-Labs.github.io/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://Mirror-Labs.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2022-11-13T00:00:00+00:00</updated>
+	<id>https://Mirror-Labs.github.io/atom.xml</id>
+	<entry xml:lang="en">
+		<title>VLOG[0]: Why are we building MirrorDB?</title>
+		<published>2022-11-13T00:00:00+00:00</published>
+		<updated>2022-11-13T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://Mirror-Labs.github.io/posts/dev-vlog-0/" type="text/html"/>
+		<id>https://Mirror-Labs.github.io/posts/dev-vlog-0/</id>
+		<content type="html">&lt;p&gt;&lt;strong&gt;Why are we building MirrorDB?&lt;&#x2F;strong&gt;
+We want to build local-first web apps with p2p syncing and there doesn’t exist a database that allow us to build
+them.&lt;&#x2F;p&gt;
+&lt;p&gt;The web has become more and more powerful as an application platform. You have support for:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;API&#x2F;Notifications_API&quot;&gt;Notifications&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;API&#x2F;IndexedDB_API&quot;&gt;Structured data storage via indexedDB&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;API&#x2F;Bluetooth&quot;&gt;Bluetooth&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;API&#x2F;WebGL_API&quot;&gt;WebGL&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;API&#x2F;WebRTC_API&quot;&gt;p2p connections via WebRTC&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;API&quot;&gt;… and a lot more!&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;You can even install web apps and add them to your home
+screen across both mobile, and desktop by creating a progressive web app (PWA).&lt;&#x2F;p&gt;
+&lt;p&gt;The web has a lot to offer. Especially considering the
+web’s two fundamental advantages: reach (you can link to a runnable application), and avoid the apple&#x2F;play store tax.
+We believe that today you could write 10x better versions of a lot of applications
+by going web native.&lt;&#x2F;p&gt;
+&lt;p&gt;Imagine apps which you can reach via a url. No login required.
+It can be installed and added to your homescreen.
+If you want to pair your phone and laptop you scan a QR code and it will automatically start syncing.
+There are a lot of apps where this design would work brilliantly and with does applications in mind we can start sketching the requirements for our database.&lt;&#x2F;p&gt;
+&lt;p&gt;As soon as a user adds a new entry we want to be able to update all queries
+so that the UI always reflects the latest state.
+We need a query language with a focus on joins; it is very typical for the UI to want data
+about multiple related entities.
+A user also expects to be able to make changes on their phone, turn it off, keep using the app on their laptop and still in the end be able to merge the state on the phone and laptop without conflicts.
+Ideally, the merging-layer is protocol agnostic and works across: files, bluetooth, usb, webrtc, websocket, and etc.&lt;&#x2F;p&gt;
+&lt;p&gt;There are a couple of technologies&#x2F;ideas that we believe will work great in tandem to realise this vision.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;IndexedDB&lt;&#x2F;strong&gt; is a database that exists in your browser and allows you to store structured data and create indexes on that data.
+Obviously you can not create a local-first web app without it.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Typescript&#x2F;Rust&lt;&#x2F;strong&gt; will be used to build the database. Typescript adds extra safety
+compared to Javascript while still giving us access to all browser API:s. Rust
+is interesting because of its great webassembly support. Databases are performance critical
+and webassembly might greatly speed it up.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;CRDTs&lt;&#x2F;strong&gt;, conflict-free replicated data types, are a type of data structure with
+merging built in. The idea is that instead of writing complex algorithms for merging data we push it
+into the very semantics of the data structure itself and get merging for free.
+Sets are a basic example of such a data structure; you can always join two sets without there being conflicts.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Datalog&lt;&#x2F;strong&gt; is a simple but powerful language to write logical programs over a set of facts.
+Usually the facts are separated into different tables like this:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Person Table&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th style=&quot;text-align: center&quot;&gt;ID&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: left&quot;&gt;Name&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: left&quot;&gt;Born&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;100&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“James Cameron”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“1954-08-16”&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;200&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“Quentin Tarantino”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“1963-03-27”&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;…&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;…&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;…&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;&lt;em&gt;Movie Table&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th style=&quot;text-align: center&quot;&gt;ID&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: left&quot;&gt;Title&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: left&quot;&gt;Release Date&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: left&quot;&gt;Director&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;300&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“The Terminator”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“1984-10-26”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;100&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;400&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“Pulp Fiction”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“1994-05-21”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;200&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;500&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“Aliens”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“1986-07-18”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;100&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;…&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;…&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;…&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;…&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;In Datalog you take existing tables and create new ones. Here, I look for all the movies each director has made by combining the information from two tables.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;datalog&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-datalog &quot;&gt;&lt;code class=&quot;language-datalog&quot; data-lang=&quot;datalog&quot;&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  DirectorToMovie(dir_name, movie_title) :-
+&lt;&#x2F;span&gt;&lt;span&gt;    Person(dir_id, dir_name, _),
+&lt;&#x2F;span&gt;&lt;span&gt;    Movie(_, movie_title, _, dir_id)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;x775.net&#x2F;2019&#x2F;03&#x2F;18&#x2F;Introduction-to-Datalog.html&quot;&gt;Look here for an introduction to datalog.&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Triple Stores&lt;&#x2F;strong&gt; are nice because they are so simple (and easy to make into a CRDT). You can think of it as your
+database only consisting of one table with three columns: “id”, “attribute”, and “value”.
+Even though it is so simple you can model any kind of data. Infact, let’s try to merge the Person and Movie tables above into one.&lt;&#x2F;p&gt;
+&lt;p&gt;Example:&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th style=&quot;text-align: center&quot;&gt;ID&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: left&quot;&gt;Attribute&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: left&quot;&gt;Value&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;100&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“person&#x2F;name”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“James Cameron”&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;100&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“person&#x2F;born”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“1954-08-16”&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;200&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“person&#x2F;name”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“Quentin Tarantino”&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;200&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“person&#x2F;born”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“1963-03-27”&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;300&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“movie&#x2F;title”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“The Terminator”&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;300&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“movie&#x2F;director”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;100&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;300&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“movie&#x2F;release-date”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“1984-10-26”&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;400&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“movie&#x2F;title”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“Pulp Fiction”&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;400&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“movie&#x2F;director”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;200&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;400&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“movie&#x2F;release-date”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“1994-05-21”&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;500&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“movie&#x2F;title”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“Aliens”&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;500&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“movie&#x2F;director”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;100&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;500&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“movie&#x2F;release-date”&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;“1986-07-18”&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: center&quot;&gt;…&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;…&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;…&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;Notice how there is a lot of replicated information. This is actually useful because it makes it very simple
+to update individual attributes for an entity, especially in a distributed system such as ours.
+If we add timestamps to all triples we can resolve merges by always picking the latest one.&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;We feel very hopeful that we will be able to solve our problem by combining all these technologies&#x2F;ideas.
+Now we just need to do the difficult thing of building it!&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; Note that we shouldn’t be using normal timestamps but instead use something like a &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;medium.com&#x2F;geekculture&#x2F;all-things-clock-time-and-order-in-distributed-systems-hybrid-logical-clock-in-depth-7c645eb03682&quot;&gt;Hybrid Logical Clock&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>What I learned as a solo founder</title>
+		<published>2022-11-05T00:00:00+00:00</published>
+		<updated>2022-11-05T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://Mirror-Labs.github.io/posts/what-i-learned-as-a-solo-founder/" type="text/html"/>
+		<id>https://Mirror-Labs.github.io/posts/what-i-learned-as-a-solo-founder/</id>
+		<content type="html">&lt;p&gt;My first attempt at creating a startup was last year, in 2021.
+I had had some early success riding on the NFT craze which ultimately resulted in me
+building &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;atomic-swap.io&#x2F;&quot;&gt;Atomic Swap&lt;&#x2F;a&gt;, an open-source p2p trading dApp
+on Cardano. Unfortunately, the markets turned, competitors appeared, and I never achieved enough
+transactions per day to make Atomic Swap sustainable.&lt;&#x2F;p&gt;
+&lt;p&gt;However, I don’t think the competitors or the market was the killer.
+It was fatigue.&lt;&#x2F;p&gt;
+&lt;p&gt;I was constantly making decisions from everything from design, implementation, to marketing.
+I was working both weekdays and weekends.
+Constantly worrying about money and Swedish banks’ downright hostile attitude towards crypto.
+When I ultimately threw in the towel and landed a 9-to-5 job I realized how important it is
+to have colleagues.
+To have people to share the burden with, and to give each other energy.
+I had been lonely and that had taken the biggest toll.&lt;&#x2F;p&gt;
+&lt;p&gt;This time I will do it differently. We will do it differently.&lt;&#x2F;p&gt;
+&lt;p&gt;We want to empower developers to build local-first web apps where users can seamlessly
+move been mobile and desktop even if they are &lt;em&gt;offline&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;To realize this vision we are building &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Mirror-Labs&#x2F;MirrorDB&quot;&gt;MirrorDB: an application-centric p2p database with super powers!&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Features:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Immutable&lt;&#x2F;li&gt;
+&lt;li&gt;Runs in both browser and server&lt;&#x2F;li&gt;
+&lt;li&gt;Real-time Sync
+&lt;ul&gt;
+&lt;li&gt;WebRTC&lt;&#x2F;li&gt;
+&lt;li&gt;LAN&lt;&#x2F;li&gt;
+&lt;li&gt;Bluetooth&lt;&#x2F;li&gt;
+&lt;li&gt;USB&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Fearless asynchronous merging of data&lt;&#x2F;li&gt;
+&lt;li&gt;Reactive queries that instantly react to changes.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Let’s get building!&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>
