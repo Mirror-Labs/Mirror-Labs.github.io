@@ -3,6 +3,7 @@ title = "What I learned as a solo founder"
 date = 2022-11-05
 
 [extra]
+modified = 2022-11-21
 tags = ["startup"]
 authorURL = "https://frankhampusweslien.com/"
 author = "Frank Hampus Weslien"

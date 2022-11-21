@@ -4,6 +4,7 @@ date = 2022-11-13
 draft = false
 
 [extra]
+modified = 2022-11-21
 tags = ["vlog", "web"]
 authorURL = "https://frankhampusweslien.com/"
 author = "Frank Hampus Weslien"
