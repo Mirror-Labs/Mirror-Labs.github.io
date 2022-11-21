@@ -200,8 +200,13 @@ h6
   max-width: 800px
 
 .center
-  display: grid
+  display: inline-grid
   place-items: center
+
+.people-container
+  gap: $space-lg
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
 
 // Title
 
