@@ -23,24 +23,24 @@
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@id"  : "{{ get_url(path='') | safe }}",
+    "@id": "{{ get_url(path='') | safe }}",
     "@type": "Organization",
     "name": "MirrorLabs",
+    "founder" : "{{ get_url(path='/people#frank-hampus-weslien') | safe }}",
     "member": [
       {
-        "@type": "OrganizationRole"
+        "@type": "OrganizationRole",
         "member": {
-          "@type": "Person",
-          "name": "Joe Montana"
+          "@id": "{{ get_url(path='/people#frank-hampus-weslien') | safe }}" },
         },
         "startDate": "2022-11-05",
         "roleName": "Chief Web Magician"
       }
     ],
-    "url" : "{{ get_url(path='') | safe }}",
-    "image" : "{{ get_url(path='logo/MirrorLabs-logo-black.svg') | safe }}",
-    "keywords" : ["decentralization", "startup", ]
-    "description" : "We are building an application centric p2p database for the browser."
+    "url": "{{ get_url(path='') | safe }}",
+    "image": "{{ get_url(path='logo/MirrorLabs-logo-black.svg') | safe }}",
+    "keywords": ["decentralization", "startup"],
+    "description": "We are building an application centric p2p database for the browser."
   }
 </script>
 {% endblock linkedData %} {% block content %}

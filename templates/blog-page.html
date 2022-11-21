@@ -20,6 +20,27 @@
 <meta property="article:section" content="Technology" />
 {% for tag in page.extra.tags %}
 <meta property="article:tag" content="{{ tag }}" />
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "name": "{{ page.title }}",
+    "headline": "{{ page.title }}",
+    "description": "{{ page.extra.description }}",
+    "image": ["{{ get_url(path='logo/MirrorLabs-logo-black.jpeg') | safe }}"],
+    "datePublished": "{{ page.date }}",
+    "dateModified": "{{ page.extra.modified }}",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "{{ page.extra.author }}",
+        "url": "{{ page.extra.authorURL }}"
+      }
+    ]
+  }
+</script>
+
 {% endfor %}
 <!--  -->
 {% endblock linkedData %}
