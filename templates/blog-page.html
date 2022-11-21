@@ -20,6 +20,7 @@
 <meta property="article:section" content="Technology" />
 {% for tag in page.extra.tags %}
 <meta property="article:tag" content="{{ tag }}" />
+{% endfor %}
 
 <script type="application/ld+json">
   {
@@ -60,8 +61,6 @@
     ]
   }
 </script>
-
-{% endfor %}
 <!--  -->
 {% endblock linkedData %}
 
